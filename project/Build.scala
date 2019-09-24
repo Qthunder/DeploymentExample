@@ -10,14 +10,9 @@ object Build {
   }
   
   val settings =  List(
-    dockerBaseImage in Docker := "adoptopenjdk/openjdk12-openj9:alpine-slim",
-    maintainer      in Docker := "gabrieasman10@gmail.com",
-    dockerAlias     in Docker := 
-      DockerAlias(
-        registryHost = Some("eu.gcr.io"),
-        username     = Some("copper-creek-252916"),
-        name         = moduleName.value,
-        tag          = Some(version.value)
-      )
+    dockerBaseImage  in Docker := "adoptopenjdk/openjdk12-openj9:alpine-slim",
+    maintainer       in Docker := "gabrieasman10@gmail.com",
+    dockerRepository in Docker := Some("eu.gcr.io"),
+    packageName      in Docker := s"copper-creek-252916/${normalizedName.value}"
   )
 }
