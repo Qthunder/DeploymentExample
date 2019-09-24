@@ -6,4 +6,4 @@ lazy val root = (project in file("."))
   .settings(mainClass    := Some("example.deployment.Main"))
   .withDependencies
   .withDocker
-  
+  .withRelease
