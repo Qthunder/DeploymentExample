@@ -4,7 +4,7 @@ import com.typesafe.sbt.SbtNativePackager.Docker
 import com.typesafe.sbt.packager.archetypes.scripts.AshScriptPlugin
 import sbt.Keys._
 import sbt._
-object Docker {
+object DockerPackager {
   implicit class WithDocker(val project: Project) extends AnyVal {
     def withDocker: Project = project.enablePlugins(DockerPlugin, AshScriptPlugin).settings(settings)
   }

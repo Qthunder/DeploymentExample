@@ -1,4 +1,4 @@
-import Build._
+import DockerPackager._
 import Dependencies._
 lazy val root = (project in file("."))
   .settings(name         := "Deployment Example")
