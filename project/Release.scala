@@ -1,6 +1,7 @@
 import sbt._
 import sbt.Keys._
 import sbtrelease.ReleasePlugin.autoImport._
+import ReleaseTransformations._
 
 object Release extends AutoPlugin {
   object autoImport {
@@ -9,9 +10,7 @@ object Release extends AutoPlugin {
     }
   }
 
-  import ReleaseTransformations._
-
-  private lazy val releaseSettings = Seq(
+  private lazy val releaseSettings = List(
     releaseUseGlobalVersion := true,
     releaseTagName          := s"${ (version in ThisBuild).value }",
     releaseTagComment       := s"Releasing ${(version in ThisBuild).value} [ci skip]",
@@ -19,13 +18,13 @@ object Release extends AutoPlugin {
     releaseProcess          := Seq[ReleaseStep](
       checkSnapshotDependencies,
       inquireVersions,
+      runClean,
+      runTest,
       setReleaseVersion,
       releaseStepCommand("docker:publish"),
       commitReleaseVersion,
       tagRelease,
       setNextVersion,
       commitNextVersion,
-      pushChanges
-    )
-  )
+      pushChanges))
 }
