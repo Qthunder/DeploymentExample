@@ -4,11 +4,11 @@ import com.typesafe.sbt.SbtNativePackager.Docker
 import com.typesafe.sbt.packager.archetypes.scripts.AshScriptPlugin
 import sbt.Keys._
 import sbt._
-object Build {
+object Docker {
   implicit class WithDocker(val project: Project) extends AnyVal {
     def withDocker: Project = project.enablePlugins(DockerPlugin, AshScriptPlugin).settings(settings)
   }
-  
+
   val settings =  List(
     dockerBaseImage  in Docker := "adoptopenjdk/openjdk12-openj9:alpine-slim",
     maintainer       in Docker := "gabrieasman10@gmail.com",
