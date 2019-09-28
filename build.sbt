@@ -1,5 +1,6 @@
 import DockerPackager._
 import Dependencies._
+import Release._
 lazy val root = (project in file("."))
   .settings(name         := "Deployment Example")
   .settings(scalaVersion := "2.13.0")

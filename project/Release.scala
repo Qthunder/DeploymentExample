@@ -4,10 +4,8 @@ import sbtrelease.ReleasePlugin.autoImport._
 import ReleaseTransformations._
 
 object Release extends AutoPlugin {
-  object autoImport {
-    implicit class ReleaseSettings(val project: Project) extends AnyVal {
-      def withRelease: Project = project.settings(releaseSettings)
-    }
+  implicit class ReleaseSettings(val project: Project) extends AnyVal {
+    def withRelease: Project = project.settings(releaseSettings)
   }
 
   private lazy val releaseSettings = List(
