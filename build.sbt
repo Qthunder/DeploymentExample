@@ -3,11 +3,8 @@ import Dependencies._
 import Release._
 import Bintray._
 
-skip in publish := true
-
 lazy val root =
   (project in file("."))
-  .aggregate(dockerExample, libraryExample)
   .withRelease
 
 lazy val libraryExample = project

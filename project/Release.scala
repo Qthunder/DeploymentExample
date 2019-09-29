@@ -2,11 +2,14 @@ import sbt._
 import sbt.Keys._
 import sbtrelease.ReleasePlugin.autoImport._
 import ReleaseTransformations._
+import com.typesafe.sbt.SbtNativePackager.Docker
 
 object Release extends AutoPlugin {
   implicit class ReleaseSettings(val project: Project) extends AnyVal {
     def withRelease: Project = project.settings(releaseSettings)
   }
+
+  private val dockerPublish = ReleaseStep(action = releaseStepTask(publish in Docker), _.)
 
   private def releaseSettings = List(
     releaseUseGlobalVersion := true,
@@ -20,7 +23,7 @@ object Release extends AutoPlugin {
       runTest,
       setReleaseVersion,
       publishArtifacts,
-      releaseStepCommand("docker:publish"), //TODO Do as release task?
+      dockerPublish,
       commitReleaseVersion,
       tagRelease,
       setNextVersion,
