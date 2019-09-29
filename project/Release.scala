@@ -5,11 +5,10 @@ import ReleaseTransformations._
 
 object Release extends AutoPlugin {
   implicit class ReleaseSettings(val project: Project) extends AnyVal {
-    def withRelease: Project = project.settings(releaseSettings(publishStep = releaseStepCommand("docker:publish")))
-    def withReleaseLibrary : Project = project.settings(releaseSettings(publishArtifacts))
+    def withRelease: Project = project.settings(releaseSettings)
   }
 
-  private def releaseSettings(publishStep : ReleaseStep) = List(
+  private def releaseSettings = List(
     releaseUseGlobalVersion := true,
     releaseTagName          := s"${ (version in ThisBuild).value }",
     releaseTagComment       := s"Releasing ${(version in ThisBuild).value} [ci skip]",
@@ -20,7 +19,8 @@ object Release extends AutoPlugin {
       runClean,
       runTest,
       setReleaseVersion,
-      publishStep,
+      publishArtifacts,
+      releaseStepCommand("docker:publish"), //TODO Do as release task?
       commitReleaseVersion,
       tagRelease,
       setNextVersion,

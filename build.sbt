@@ -1,8 +1,14 @@
 import DockerPackager._
 import Dependencies._
 import Release._
+import Bintray._
 
-lazy val root = (project in file("."))
+skip in publish := true
+
+lazy val root =
+  (project in file("."))
+  .aggregate(dockerExample, libraryExample)
+  .withRelease
 
 lazy val dockerExample = (project in file("docker-example"))
   .settings(moduleName   := "Deployment Example (Docker)")
@@ -10,11 +16,10 @@ lazy val dockerExample = (project in file("docker-example"))
   .settings(mainClass    := Some("example.deployment.Main"))
   .withDependencies
   .withDocker
-  .withRelease
 
 lazy val libraryExample = (project in file("library-example"))
   .settings(moduleName   := "Deployment Example (Library)")
   .settings(scalaVersion := "2.13.0")
   .withDependencies
-  .withReleaseLibrary
+  .withBintray
 
