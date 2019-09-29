@@ -1,4 +1,4 @@
-import bintray.BintrayPlugin.autoImport.{bintrayOmitLicense, bintrayOrganization, bintrayRepository}
+import bintray.BintrayPlugin.autoImport._
 import sbt.Keys._
 import sbt.Project
 

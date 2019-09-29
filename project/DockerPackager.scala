@@ -13,6 +13,6 @@ object DockerPackager {
     dockerBaseImage  in Docker := "adoptopenjdk/openjdk12-openj9:alpine-slim",
     maintainer       in Docker := "gabrieasman10@gmail.com",
     dockerRepository in Docker := Some("eu.gcr.io"),
-    packageName      in Docker := s"copper-creek-252916/${Project.normalizeModuleID(moduleName.value)})"
+    packageName      in Docker := s"copper-creek-252916/${Project.normalizeModuleID(moduleName.value)}"
   )
 }
