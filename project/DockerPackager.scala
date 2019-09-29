@@ -10,6 +10,7 @@ object DockerPackager {
   }
 
   val settings =  List(
+    skip in publish := true,
     dockerBaseImage  in Docker := "adoptopenjdk/openjdk12-openj9:alpine-slim",
     maintainer       in Docker := "gabrieasman10@gmail.com",
     dockerRepository in Docker := Some("eu.gcr.io"),

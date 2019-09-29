@@ -1,7 +1,7 @@
 import bintray.BintrayPlugin.autoImport._
+import com.typesafe.sbt.SbtNativePackager.Docker
 import sbt.Keys._
 import sbt.Project
-
 object Bintray {
 
   implicit class WithBintray(project: Project) {
@@ -9,9 +9,10 @@ object Bintray {
   }
 
   val settings = List(
-    skip in publish := false,
+    publish in Docker := {()},
+    bintrayPackage := Project.normalizeModuleID(moduleName.value),
     bintrayOmitLicense := true,
-    bintrayOrganization := None,
-    bintrayRepository := "maven"
+    bintrayOrganization := Some("ovotech"),
+    bintrayRepository := "maven-private"
   )
 }
