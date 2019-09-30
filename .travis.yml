@@ -12,6 +12,7 @@ dist: trusty
 script:
   - git config --global user.email "gabrielasman10@gmail.com"
   - git config --global user.name "gabrielasman"
+  - git checkout ${TRAVIS_BRANCH}
   - echo $GCP_TOKEN | base64 -d | docker login -u _json_key --password-stdin https://eu.gcr.io
   - sbt 'release with-defaults'
 
