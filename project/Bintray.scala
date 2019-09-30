@@ -1,5 +1,4 @@
 import bintray.BintrayPlugin.autoImport._
-import com.typesafe.sbt.SbtNativePackager.Docker
 import sbt.Keys._
 import sbt.Project
 object Bintray {
@@ -9,6 +8,7 @@ object Bintray {
   }
 
   val settings = List(
+    skip in publish := false,
     bintrayPackage := Project.normalizeModuleID(moduleName.value),
     bintrayOmitLicense := true,
     bintrayOrganization := Some("ovotech"),
