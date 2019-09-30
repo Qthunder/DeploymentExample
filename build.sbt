@@ -4,6 +4,7 @@ import Release._
 import Bintray._
 
 ThisBuild / publish / skip := true
+skip in publish in Docker := true
 
 lazy val root =
   (project in file("."))

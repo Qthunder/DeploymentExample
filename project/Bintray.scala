@@ -9,7 +9,6 @@ object Bintray {
   }
 
   val settings = List(
-    publish in Docker := {()},
     bintrayPackage := Project.normalizeModuleID(moduleName.value),
     bintrayOmitLicense := true,
     bintrayOrganization := Some("ovotech"),
