@@ -21,7 +21,7 @@ object Release extends AutoPlugin {
       runTest,
       setReleaseVersion,
       publishArtifacts,
-      releaseStepTask(publish in Docker),
+      releaseStepCommand("docker:publish"), //TODO Do as release task?
       commitReleaseVersion,
       tagRelease,
       setNextVersion,
