@@ -2,6 +2,7 @@ import sbt._
 import sbt.Keys._
 import sbtrelease.ReleasePlugin.autoImport._
 import ReleaseTransformations._
+import com.typesafe.sbt.SbtNativePackager.Docker
 
 object Release extends AutoPlugin {
   implicit class ReleaseSettings(val project: Project) extends AnyVal {
@@ -20,7 +21,7 @@ object Release extends AutoPlugin {
       runTest,
       setReleaseVersion,
       publishArtifacts,
-      releaseStepCommand("docker:publish"), //TODO Do as release task?
+      releaseStepTask(publish in Docker),
       commitReleaseVersion,
       tagRelease,
       setNextVersion,
