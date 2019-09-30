@@ -3,7 +3,7 @@ import Dependencies._
 import Release._
 import Bintray._
 
-Global / skip := true
+ThisBuild / publish / skip := true
 
 lazy val root =
   (project in file("."))
