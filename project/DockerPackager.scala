@@ -6,7 +6,7 @@ import sbt.Keys._
 import sbt._
 object DockerPackager {
   implicit class WithDocker(val project: Project) extends AnyVal {
-    def withDocker: Project = project.enablePlugins(DockerPlugin, AshScriptPlugin).settings(settings)
+    def withDocker: Project = project.enablePlugins(DockerPlugin).settings(settings)
   }
 
   val settings =  List(
