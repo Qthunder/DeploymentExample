@@ -1,12 +1,12 @@
 import com.typesafe.sbt.SbtNativePackager.Docker
 import com.typesafe.sbt.packager.Keys._
-import com.typesafe.sbt.packager.archetypes.JavaAppPackaging
+import com.typesafe.sbt.packager.archetypes.scripts.AshScriptPlugin
 import com.typesafe.sbt.packager.docker.DockerPlugin
 import sbt.Keys._
 import sbt._
 object DockerPackager {
   implicit class WithDocker(val project: Project) extends AnyVal {
-    def withDocker: Project = project.enablePlugins(DockerPlugin, JavaAppPackaging).settings(settings)
+    def withDocker: Project = project.enablePlugins(DockerPlugin, AshScriptPlugin).settings(settings)
   }
 
   val settings =  List(
