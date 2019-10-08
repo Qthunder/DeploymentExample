@@ -17,7 +17,6 @@ object Release extends AutoPlugin {
     releaseProcess          := Seq[ReleaseStep](
       checkSnapshotDependencies,
       inquireVersions,
-      runClean,
       runTest,
       setReleaseVersion,
       publishArtifacts,
