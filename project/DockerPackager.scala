@@ -1,6 +1,5 @@
 import com.typesafe.sbt.SbtNativePackager.Docker
 import com.typesafe.sbt.packager.Keys._
-import com.typesafe.sbt.packager.archetypes.scripts.AshScriptPlugin
 import com.typesafe.sbt.packager.docker.DockerPlugin
 import sbt.Keys._
 import sbt._
